@@ -56,89 +56,107 @@ const pokemonList = [
     }
 ]
 
+class PokemonGame {
+  constructor() {
+    this.points = 0;
+    this.round = 1;
+    this.list = pokemonList.slice();
+  }
 
-let new6 = [];
+
+}
+
+
+let createSixCards = [];
 let comp1 = [];
 let play1 = [];
 let splitterOne = [];
-let new33 = [];
-let new44 = [];
+let createCompCards = [];
+let createPlayerCards = [];
 let score = [{player: 0, computer: 0}];
 
 const pickSix = (pokemonList) => {
     for(let i = 0; i < 6; i++){
-        new6.push(pokemonList.splice(Math.floor(Math.random() * pokemonList.length),1)[0]);
+        createSixCards.push(pokemonList.splice(Math.floor(Math.random() * pokemonList.length),1)[0]);
     }
-    return new6;
+    return createSixCards;
     // console.log(newArr);
 }
+// NOTE 
 console.log(pickSix(pokemonList));
-new33 = new6.slice(0,3);
-console.log(new33);
-new44 = new6.slice(3,6);
-console.log(new44);
+createCompCards = createSixCards.slice(0,3);
+console.log(createCompCards);
+createPlayerCards = createSixCards.slice(3,6);
+console.log(createPlayerCards);
 
-comp1.push(new33.splice(Math.floor(Math.random() * new33.length),1)[0]);
+comp1.push(createCompCards.splice(Math.floor(Math.random() * createCompCards.length),1)[0]);
 console.log(comp1[0]);
 console.log(comp1[0].damage);
 
 
-const playerHighestOne = (new44) => {
-    if(new44[0].damage > new44[1].damage){
-        return `${new44[0].damage}`
-    }   else if(new44[1].damage > new44[2].damage){
-        return `${new44[1].damage}`
+const playerHighestOne = (createPlayerCards) => {
+    if(createPlayerCards[0].damage > createPlayerCards[1].damage){
+        return `${createPlayerCards[0].damage}`
+    }   else if(createPlayerCards[1].damage > createPlayerCards[2].damage){
+        return `${createPlayerCards[1].damage}`
     }   else{
-        return `${new44[2].damage}`
+        return `${createPlayerCards[2].damage}`
     }
 }
 // console.log(playerHighestOne);
-console.log(playerHighestOne(new44));
+// NOTE 
+console.log(playerHighestOne(createPlayerCards));
 
 const checkBigger = () => {
-    if(playerHighestOne(new44) > comp1[0].damage){
+    if(playerHighestOne(createPlayerCards) > comp1[0].damage){
         score[0].player += 1;
-        return `Player Wins!`, score;
-    }   else if(playerHighestOne(new44) < comp1[0].damage){
+        return `Player Wins!`;
+    }   else if(playerHighestOne(createPlayerCards) < comp1[0].damage){
         score[0].computer += 1;
-        return `Computer Wins! ${score}`;
-    }   else if(playerHighestOne(new44) == comp1[0].damage){
-        return `Tie Game Boys!  ${score}`;
+        return `Computer Wins!`;
+    }   else if(playerHighestOne(createPlayerCards) == comp1[0].damage){
+        return `Tie Game Boys!`;
     }   else {
         return 'Error';
     }
     
 }
 
-const runRoundThree = () => {
-    for(let i = 0; i < 3; i++){
-        checkBigger();
-        return score;
-    }
-}
-console.log(runRoundThree());
+// const runRoundThree = () => {
+//     for(let i = 0; i < 3; i++){
+     
+//         checkBigger();
+        
+//     }
+//     return score;
+// }
+// console.log(runRoundThree());
 
-console.log(checkBigger());
+const roundCalc = () => {
+    checkBigger();
+    return score;
+}
+console.log(roundCalc());
 
 
 
 // console.log(pickSix(pokemonList));
 // new33 = new6.slice(0,3);
 // console.log(new33);
-// new44 = new6.slice(3,6);
-// console.log(new44);
+// createPlayerCards = new6.slice(3,6);
+// console.log(createPlayerCards);
 // comp1.push(new33.splice(Math.floor(Math.random() * new33.length),1)[0]);
 // console.log(comp1[0]);
 // console.log(comp1[0].damage);
 
-// console.log(playerHighestOne(new44));
+// console.log(playerHighestOne(createPlayerCards));
 
 
 
 
 
 
-// play1.push(new44.splice(Math.floor(Math.random() * new44.length),1)[0]);
+// play1.push(createPlayerCards.splice(Math.floor(Math.random() * createPlayerCards.length),1)[0]);
 // console.log(play1);
 
 // const compPickOne = (new6) => {
