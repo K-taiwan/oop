@@ -62,7 +62,7 @@ class Game {
         this.name = name;
         this.damage = damage;
     }
-    list(){
+    cardsLeft(){
         console.log(pokemonList);
         
     }
@@ -74,5 +74,5 @@ class Player extends Game {
     }
 }
 const game = new Game();
-game.list();
+game.cardsLeft();
 
